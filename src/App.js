@@ -22,6 +22,11 @@ function App() {
     setSelectedNote(note);
   };
 
+  // Update Note
+  const updateNote = (updatedNote) => {
+    setNotes((prevNotes) => prevNotes.map((note) => (note.id === updatedNote.id ? updatedNote : note)));
+  };
+
   return (
     <div>
       <div className="container">
@@ -32,7 +37,7 @@ function App() {
         <div className="noteSidebar">
           <Notes notes={notes} onNoteClick={onSelectingNote} />
         </div>
-        <div className="noteContent">{selectedNote && <NoteDetail note={selectedNote} />}</div>
+        <div className="noteContent">{selectedNote && <NoteDetail note={selectedNote} onUpdateNote={updateNote} />}</div>
       </div>
     </div>
   );
