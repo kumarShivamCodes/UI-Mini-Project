@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header";
 import AddNote from "./components/AddNote";
 import Notes from "./components/Notes";
+import NoteDetail from "./components/NoteDetail";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -16,6 +17,11 @@ function App() {
     setNotes([...notes, newNote]);
   };
 
+  //Select Note
+  const onSelectingNote = (note) => {
+    setSelectedNote(note);
+  };
+
   return (
     <div>
       <div className="container">
@@ -24,9 +30,9 @@ function App() {
       </div>
       <div className="notes">
         <div className="noteSidebar">
-          <Notes notes={notes} onNoteClick={setSelectedNote} />
+          <Notes notes={notes} onNoteClick={onSelectingNote} />
         </div>
-        <div className="noteContent">{selectedNote && <p>{selectedNote.description}</p>}</div>
+        <div className="noteContent">{selectedNote && <NoteDetail note={selectedNote} />}</div>
       </div>
     </div>
   );
