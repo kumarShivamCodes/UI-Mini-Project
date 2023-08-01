@@ -27,6 +27,11 @@ function App() {
     setNotes((prevNotes) => prevNotes.map((note) => (note.id === updatedNote.id ? updatedNote : note)));
   };
 
+  const deleteNote = (note) => {
+    setNotes(notes.filter((n) => n.id !== note.id));
+    setSelectedNote(null);
+  };
+
   return (
     <div>
       <div className="container">
@@ -37,7 +42,7 @@ function App() {
         <div className="noteSidebar">
           <Notes notes={notes} onNoteClick={onSelectingNote} />
         </div>
-        <div className="noteContent">{selectedNote && <NoteDetail note={selectedNote} onUpdateNote={updateNote} />}</div>
+        <div className="noteContent">{selectedNote && <NoteDetail note={selectedNote} onUpdateNote={updateNote} onDeleteNote={deleteNote} />}</div>
       </div>
     </div>
   );

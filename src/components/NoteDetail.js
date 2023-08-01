@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const NoteDetail = ({ note, onUpdateNote }) => {
+const NoteDetail = ({ note, onUpdateNote, onDeleteNote }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -20,6 +20,10 @@ const NoteDetail = ({ note, onUpdateNote }) => {
     onUpdateNote(updatedNote);
   };
 
+  const deleteNote = () => {
+    onDeleteNote(note);
+  };
+
   return (
     <form className="add-form" onSubmit={onSubmit}>
       <div className="form-control">
@@ -32,7 +36,7 @@ const NoteDetail = ({ note, onUpdateNote }) => {
       </div>
 
       <input type="submit" value="Save Task" className="btn" />
-      <input type="button" value="Delete Task" className="btn btn-del" />
+      <input type="button" value="Delete Task" className="btn btn-del" onClick={deleteNote} />
     </form>
   );
 };
