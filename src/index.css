@@ -71,6 +71,87 @@ body {
   align-items: center;
   margin-bottom: 20px;
 }
+/* CSS for Notes Container */
+.notes {
+  display: flex;
+}
+
+/* CSS for Notes Sidebar */
+.noteSidebar {
+  flex: 1;
+  max-width: 250px;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border-right: 1px solid white;
+  overflow-y: auto;
+}
+.notesWrapper {
+  max-height: 400px;
+}
+
+.noteSidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.note-title {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.note-title:hover {
+  color: #6c63ff;
+}
+
+/* CSS for Note Content */
+.noteContent {
+  flex: 1;
+  background-color: white;
+  color: black;
+  padding: 20px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control label {
+  font-weight: bold;
+}
+
+.form-control input,
+.form-control textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-control textarea {
+  resize: none;
+  height: 150px;
+}
+
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
 
 .btn:focus {
   outline: none;
@@ -81,77 +162,10 @@ body {
 }
 
 .btn-del {
-  background-color: red;
-}
-.add-form {
-  margin-bottom: 40px;
+  background: #ff0000;
 }
 
-.form-control {
-  margin: 20px 0;
-}
-
-.form-control label {
+.btn-block {
   display: block;
-}
-
-.form-control input {
   width: 100%;
-  height: 40px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 17px;
-}
-
-.form-control-check {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.form-control-check label {
-  flex: 1;
-}
-
-.form-control-check input {
-  flex: 2;
-  height: 20px;
-}
-
-textarea {
-  width: 100%;
-  height: 150px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  resize: none;
-  font-size: 14px;
-}
-
-.notes {
-  display: grid;
-  grid-template-columns: 250px 600px;
-  column-gap: 10px;
-  row-gap: 20px;
-  margin: 30px auto;
-  overflow: auto;
-  min-height: 300px;
-  border: 1px solid steelblue;
-  border-radius: 5px;
-  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.15);
-  background-color: white;
-  margin-bottom: 20px;
-}
-.noteSidebar {
-  background-color: gray;
-  padding-top: 14px;
-  padding-left: 10px;
-}
-.note-title:hover {
-  color: rgb(223, 153, 74);
-  cursor: pointer;
-}
-footer {
-  margin-top: 30px;
-  text-align: center;
 }
