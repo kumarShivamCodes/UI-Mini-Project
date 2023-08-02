@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import AddNote from "./components/AddNote";
 import Notes from "./components/Notes";
 import NoteDetail from "./components/NoteDetail";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [notes, setNotes] = useState(() => {
@@ -41,18 +42,29 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="container">
-        <Header />
-        <AddNote onAdd={addNote} />
+    <Router>
+      <div>
+        <Navbar />
+
+        <Switch>
+          <Route path="/notes">
+            <div className="notes">
+              <div className="noteSidebar">
+                <Notes notes={notes} onNoteClick={onSelectingNote} />
+              </div>
+              <div className="noteContent">{selectedNote && <NoteDetail note={selectedNote} onUpdateNote={updateNote} onDeleteNote={deleteNote} />}</div>
+            </div>
+          </Route>
+
+          <Route path="/">
+            <div className="container">
+              <Header />
+              <AddNote onAdd={addNote} />
+            </div>
+          </Route>
+        </Switch>
       </div>
-      <div className="notes">
-        <div className="noteSidebar">
-          <Notes notes={notes} onNoteClick={onSelectingNote} />
-        </div>
-        <div className="noteContent">{selectedNote && <NoteDetail note={selectedNote} onUpdateNote={updateNote} onDeleteNote={deleteNote} />}</div>
-      </div>
-    </div>
+    </Router>
   );
 }
 
